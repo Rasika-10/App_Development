@@ -1,0 +1,20 @@
+.main-instruct
+{
+    font-size: 16px;
+    font-family: cursive;
+    padding:10px 0  40px 0;
+}
+
+
+.border-instruct
+{
+    border-style: groove;
+   width: 80%;
+   padding:22px;
+   
+}
+.l-instruct
+{
+    padding-left: 250px;
+    padding-top: 60px;
+}
