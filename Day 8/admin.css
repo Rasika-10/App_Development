@@ -1,0 +1,115 @@
+.videoTag-admin
+{
+   padding-right: 15%;
+}
+
+.main-admin
+{
+    text-align:center;
+    justify-content: right;
+    display:flex;
+    padding:90px 0px 90px 0px;
+   /* max-height: 100%; */
+   
+    /* background-color:rgb(211, 204, 204); */
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 15px;
+   
+    padding-right: 150px;
+}
+
+.sub-main-admin
+{
+    display:flex;
+    justify-content: center;
+    height:500px;
+    width:37%;
+    box-shadow: 11px 12px 13px 12px  rgb(153, 148, 148);
+    padding-top:30px;
+    border-radius:10px;
+    background-color: rgb(65, 65, 65);
+   
+    /* background-color:white; */
+}
+
+.imgs-admin
+{
+    padding-top:0px;
+    justify-content: center;
+    display: flex;
+    
+}
+
+.container-image-admin
+{
+    background-color:rgb(150, 148, 148);
+    border-radius:8px;
+    padding-left: 8px;
+    align-items:center;
+    display:flex;
+    height:130px;
+    width:130px;
+}
+
+.profile-admin
+{
+    height: 110px;
+    width:110px;
+    border-radius:120px;
+}
+
+.input-group-prepend span{
+    width: 40px;
+    
+    background-color: #54568f;
+    color: black;
+    border:0 !important;
+    }
+input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+    
+}
+
+.remember{
+    color: white;
+}
+
+.remember input
+{
+    width: 40px;
+    height: 40x;
+    margin-left: 25px;
+    margin-right: 5px;
+}
+.login_btn{
+    color: black;
+    background-color:  #54568f;
+    width: 100px;
+    height:30px;
+    font-size: 15px;;
+ }
+        
+.login_btn:hover{
+     color: black;
+     background-color: #c3c4da;;
+ }
+        
+.links{
+   color: rgb(240, 240, 240);
+  
+}
+        
+.links a{
+        margin-right: 18px;
+        color:rgb(226, 226, 231);
+}  
+
+.h1-login-admin{
+    color: white;
+}
+
+.form
+{
+    padding-left: 30px;
+}

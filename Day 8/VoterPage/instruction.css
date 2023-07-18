@@ -1,0 +1,36 @@
+.main-instruct
+{
+    font-size: 16px;
+    font-family: cursive;
+    padding:10px 0  40px 0;
+}
+
+
+.border-instruct
+
+{
+    border-style: groove;
+   width: 90%;
+   padding:22px;
+   text-align: left;
+}
+.l-instruct
+{
+  
+    padding-left: 120px;
+    padding-top: 0px;
+}
+
+.ag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    padding-left: 30%;
+  } 
+  
+  
+.con
+{
+    width: 400px;
+}

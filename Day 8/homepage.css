@@ -1,0 +1,35 @@
+
+h1{
+  color: black;
+  font-family: Pangolin;
+  font-size: 35px;
+}
+
+.home-main
+{
+  
+
+  padding-right: 900px;
+   padding-top: 150px;
+  
+
+   
+}
+
+.quote
+{
+  padding-top: 50px;
+  padding-left: 60px;
+  font-size: 13px ;
+  text-align: left;
+  
+}
+
+
+.profile-main
+{
+  float: right;
+  max-width: 70%;
+  padding-right: 100px;
+  padding-top: 30px;
+}
