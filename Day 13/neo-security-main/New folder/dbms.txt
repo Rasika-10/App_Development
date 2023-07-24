@@ -1,0 +1,103 @@
+1.
+
+create table employees(
+    employee_id int not null primary key,
+    first_name varchar(25) not null,
+    last_name varchar(25) not null,
+    email varchar(25)not null,
+    phone_number varchar(20) not null,
+    hire_date date not null,
+    job_id varchar(10),
+    salary decimal(8,2) not null,
+    commission_pct int ,
+    manager_id int,
+    department_id int
+);
+
+2.
+
+drop table facilities;
+
+3.
+alter table members
+change column zipcode pincode int;
+
+4.
+INSERT into employees(EMPLOYEE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,JOB_ID,SALARY,COMMISSION_PCT,MANAGER_ID,DEPARTMENT_ID)
+VALUES(1,'Adhi','B','adhi@gmail.com','129988','2004/04/22','100',700000.00,11,141,111);
+INSERT into employees(EMPLOYEE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,JOB_ID,SALARY,COMMISSION_PCT,MANAGER_ID,DEPARTMENT_ID)
+VALUES(2,'nikita','M','niki@gmail.com','16166','2022/04/04','200',600000.00,12,121,1221);
+INSERT into employees(EMPLOYEE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,JOB_ID,SALARY,COMMISSION_PCT,MANAGER_ID,DEPARTMENT_ID)
+VALUES(3,'monish','K','monish@gmail.com','18881','2004/08/18','300',650000.00,13,131,1331);
+INSERT into employees(EMPLOYEE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,JOB_ID,SALARY,COMMISSION_PCT,MANAGER_ID,DEPARTMENT_ID)
+VALUES(4,'aryan','M','aryan@gmail.com','19991','2022/05/13','400',200000.00,14,141,1441);
+
+5.
+update facilities set name='Snooker Table-2' where name='Pool Table';
+
+6.
+
+delete from members;
+
+7.
+update facilities
+set membercost=1000
+where monthlymaintenance>500;
+
+8.
+create table orders(
+    orderNumber int not null primary key,
+    orderDate date not null,
+    requiredDate date not null,
+    shippedDate date not null,
+    status varchar(15) not null,
+    comments text not null,
+    customerNumber int not null,
+    foreign key (customerNumber) references customers(customerNumber)
+);
+
+9.
+
+alter table employee
+add constraint depIdFk
+foreign key(deptId) references department(departmentId);
+
+10.
+
+select recommendedby,count(recommendedby) as count from members
+where recommendedby is not null
+group by recommendedby
+order by recommendedby;
+
+11.
+
+select facid,extract(month from starttime) as month,sum(slots) as "Total Slots" 
+from bookings
+where starttime>='2012-07-01' and starttime <='2012-08-31'
+group by facid,month
+order by facid,month;
+
+12.
+select Employee_id as ID,First_name as First_name,sum(Incentive_amount) as Incentive from EMPLOYEE_XYZ e
+join  INCENTIVES_XYZ i
+on e.Employee_id=i.id
+group by i.id
+order by Employee_Id;
+
+
+
+13.
+select Employee_id as ID,First_name as First_name,sum(Incentive_amount) as Incentive from EMPLOYEE_XYZ e
+join  INCENTIVES_XYZ i
+on e.Employee_id=i.id
+group by i.id
+order by Employee_Id;
+
+14.
+
+select authorName as Author_Name,sum(soldCopies) as sold_sum from authorBooks a
+join soldCopies s
+on a.bookName=s.bookName
+group by a.authorName
+order by sold_sum desc
+limit 3;

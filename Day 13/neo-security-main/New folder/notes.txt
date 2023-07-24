@@ -1,0 +1,45 @@
+StringBuffer is synchronized  -- StringBuilder is non-synchronized 
+StringBuffer is less efficient --StringBuilder is more efficient
+
+
+Class	Object
+--A class is a blueprint for declaring and creating objects.	
+
+---An object is a class instance that allows programmers 
+to use variables and methods from inside the class.
+
+
+Inheritance
+
+---Inheritance -that acquires the properties from one class to other classes; 
+for example, the relationship between father and son
+
+Encapsulation
+
+---Encapsulation in Java refers to integrating data (variables) 
+and code (methods) into a single unit
+
+
+Abstraction 
+
+---Abstraction is a process of hiding the implementation details and 
+showing only functionality to the user
+
+polymorphism
+
+--the ability of a message to be displayed in more than one form.
+
+Abstract class: 
+-----is a restricted class that cannot be used to create objects
+
+Interface
+
+----An interface is a completely "abstract class" that is used to group 
+related methods with empty bodies:
+
+
+JDBC
+
+--The JDBC API is a Java API that can access any kind of tabular data, 
+especially data stored in a relational database. 
+
