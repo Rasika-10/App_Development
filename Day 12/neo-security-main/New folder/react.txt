@@ -1,0 +1,288 @@
+create new folder lab
+In visual studio,open a folder lab
+Then open terminal and type 
+---npx create-react-app demo_lab
+Happy-Hacking!!!!----
+---cd demo_lab
+---npm start
+
+Changing the directory
+  ---cd ..
+     cd ..
+     cd D:\(Pathname)
+ then npx create-react-app appname
+
+npm install react-router-dom --save
+
+algorithm
+--create a new js file and named its as fcomponent.js
+--create a new function component and name it as a demo
+--inside the function component return the html element
+--export the function component demo
+--import  the function component from fcomponent
+--inside the root.render use the component
+--now the output will display in react app
+
+ ----props are a type of object 
+where the value of attributes of a 
+tag is stored.
+similar to HTML attributes. 
+read-only components
+
+a function that does not manage
+ any state.
+
+ a stateful component is a component 
+that holds some state
+
+
+
+
+
+
+
+
+
+import React , {useState,setState}from 'react';
+
+const [id, setCustomerId] = useState(null);
+    const [customerName, setCustomerName] = useState(null);
+    const [tableno, setTableNumber] = useState(null);
+    const [date,setDate] = useState(null);
+    const [time,setTime] = useState(null);
+    const [details,setDetails] = useState(null);
+    const [contact,setContact] = useState(null);
+
+    const handleInputChange = (e) => {
+        const {id , value} = e.target;
+        if(id === "id"){
+            setCustomerId(value);
+        }
+        if(id === "customerName"){
+            setCustomerName(value);
+        }
+        if(id === "tableno"){
+            setTableNumber(value);
+        }
+        if(id === "date"){
+            setDate(value);
+        }
+        if(id === "time"){
+            setTime(value);
+        }
+        if(id === "details"){
+            setDetails(value);
+        }
+        if(id === "contact"){
+            setContact(value);
+        }
+
+    }
+
+    const handleSubmit  = () => {
+        console.log(id,customerName,tableno,date,time,details,contact);
+    }
+
+
+function BookingForm() {
+
+    return (  
+       
+        <div className="form">
+            <div className="form-body">
+                <div className="customer-id">
+                    <label className="form__label" for="id">Customer Id </label>
+                    <input className="form__input" type="number" value={id} onChange = {(e) => handleInputChange(e)} id="id" placeholder="CustomerId"/>
+                </div>
+                <div className="customer-name">
+                    <label className="form__label" for="customerName">Customer Name </label>
+                    <input  type="text"  id="customerName" value={customerName}  className="form__input" onChange = {(e) => handleInputChange(e)} placeholder="CustomerName"/>
+                </div>
+                <div className="table-number">
+                    <label className="form__label" for="tableno">Table Number</label>
+                    <input  type="number" id="tableno" className="form__input" value={tableno} onChange = {(e) => handleInputChange(e)} placeholder="TableNumber"/>
+                </div>
+                <div className="date">
+                    <label className="form__label" for="date">Date </label>
+                    <input className="form__input" type="date"  id="date" value={date} onChange = {(e) => handleInputChange(e)} placeholder="Date"/>
+                </div>
+                <div className="time">
+                    <label className="form__label" for="time">Time </label>
+                    <input className="form__input" type="time" id="time" value={time} onChange = {(e) => handleInputChange(e)} placeholder="Time"/>
+                </div>
+                <div className="order-details">
+                    <label className="form__label" for="details">Order Details </label>
+                    <input className="form__input" type="text" id="details" value={details} onChange = {(e) => handleInputChange(e)} placeholder="Order-Details"/>
+                </div>
+
+                <div className="mobile-number">
+                    <label className="form__label" for="contact">Mobile Number</label>
+                    <input className="form__input" type="number" id="contact" value={contact} onChange = {(e) => handleInputChange(e)} placeholder="Mobile-Number"/>
+                </div>
+            </div>
+            <div class="footer">
+                <button onClick={()=>handleSubmit()} type="submit" class="btn">Register</button>
+            </div>
+        </div>
+       
+    );
+}
+
+export default BookingForm;
+
+
+
+
+import axios from 'axios';
+import {useState } from "react";
+ 
+function PatientRegistation()
+{
+    const [id, setId] = useState('');
+    const [patientName, setPatientName] = useState("");
+    const [diseaseName, setDiseaseName] = useState("");
+    const [wardNo, setWardNo] = useState("");
+    const [dateOfBirth, setDateOfBirth] = useState("");
+    const [age, setAge] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [address, setAddress] = useState("");
+    const [gender, setGender] = useState("");
+   
+    
+ 
+    async function save(event)
+    {
+        event.preventDefault();
+    try
+        {
+         await axios.post("http://localhost:8080/patients/save",
+        {
+        
+        patientName:patientName,
+        diseaseName:diseaseName,
+        wardNo:wardNo,
+        dateOfBirth:dateOfBirth,
+        age:age,
+        phoneNumber:phoneNumber,
+        address : address,
+        gender:gender
+        });
+          alert("Patient Registation  is Successfully Completed.");
+          setId("");
+          setPatientName("");
+          setDiseaseName("");
+          setAddress("");
+          setAge("");
+          setDateOfBirth("");
+          setPhoneNumber("");
+          setGender("");
+          setWardNo("");
+        
+        
+        }
+    catch(err)
+        {
+          alert("User Registation Failed");
+        }
+   }
+    return (
+        <center>
+        <div class="container mt-4" >
+        <form>
+        <div class="form-group">
+            <label>PatientName</label>
+            <input type="text" class="form-control" placeholder="Enter PatientName"
+             value={patientName}
+            onChange={(event) =>
+              {
+                setPatientName(event.target.value);      
+              }}
+            />
+        </div>
+        <br></br>
+        <div class="form-group">
+            <label>DiseaseName</label>
+            <input type="text" class="form-control" placeholder="Enter DiseaseName"
+             value={diseaseName}
+            onChange={(event) =>
+              {
+                setDiseaseName(event.target.value);      
+              }}
+            />
+        </div>
+        <br></br>
+        <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" placeholder="Enter Address"
+             value={address}
+             onChange={(event) =>
+               {
+                setAddress(event.target.value);      
+               }}
+            />
+        </div>
+        <br></br>
+        <div class="form-group">
+            <label>Age</label>
+            <input type="text" class="form-control" placeholder="Enter age"
+             value={age}
+             onChange={(event) =>
+               {
+                setAge(event.target.value);      
+               }}
+            />
+        </div>
+        <br></br>
+        <div class="form-group">
+            <label>DateOfBirth</label>
+            <input type="text" class="form-control" placeholder="Enter DOB"
+            value={dateOfBirth}
+            onChange={(event) =>
+              {
+                setDateOfBirth(event.target.value);      
+              }}
+           />
+        </div>
+        <br></br>
+        <div class="form-group">
+            <label>WardNo</label>
+            <input type="text" class="form-control" placeholder="Enter WardNo"
+            value={wardNo}
+            onChange={(event) =>
+              {
+                setWardNo(event.target.value);      
+              }}
+           />
+        </div>
+        <br></br>
+        <div class="form-group">
+            <label>PhoneNumber</label>
+            <input type="text" class="form-control" placeholder="Enter WardNo"
+            value={phoneNumber}
+            onChange={(event) =>
+              {
+                setPhoneNumber(event.target.value);      
+              }}
+           />
+        </div>
+        <br></br>
+        <div class="form-group">
+            <label>Gender</label>
+            <input type="text" class="form-control" placeholder="Enter Gender"
+            value={gender}
+            onChange={(event) =>
+              {
+                setGender(event.target.value);      
+              }}
+           />
+        </div>
+        <br></br>
+        <button class="btn btn-primary mt-4"  onClick={save}>Register</button>
+        </form>
+ 
+      </div>
+      </center>
+    );
+  }
+  
+  export default PatientRegistation;

@@ -1,0 +1,346 @@
+1.From the Table DDL of employees table given below, Write a query to create a table employees.
+
+create table employees(
+employee_id int not null primary key,
+first_name varchar(25) not null,
+last_name varchar(25) not null,
+email varchar(25) not null,
+phone_number varchar(20) not null,
+hire_date date not null,
+job_id varchar(10),
+salary decimal(8,2) not null,
+commission_pct int,
+manager_id int,
+department_id int);
+
+footer snippet:
+---------------
+
+show columns from employees;
+
+--------------------------------------------------------------------------------------
+
+2.Write a query to drop the table facilities.
+Hint: Refer the table for the field names and its data type of the table.
+
+drop table facilities;
+
+------------------------------------------------------------------------------------
+
+
+3.From the DDL given below, 
+Write a query to change the column name zipcode to pincode in members table.
+
+
+alter table members
+change zipcode pincode int;
+
+footer snippet:
+---------------
+SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE 
+TABLE_NAME = 'members';
+
+-----------------------------------------------------------------------------------
+4.	Write a query to insert any 4 records to the table 'employees'
+The column names and data types are given below.
+
+INSERT INTO employees
+VALUES(1,"Sounder","s",'SHA',789965,10/05/2004,'SHANM',5000.00,5,75,69);
+INSERT INTO employees
+VALUES(2,"Saran","s",'SHA',789965,10/05/2004,'SHANM',5000.00,5,75,69);
+INSERT INTO employees
+VALUES(3,"Rizwan","s",'SHA',789965,10/05/2004,'SHANM',5000.00,5,75,69);
+INSERT INTO employees
+VALUES(4,"Yuvan","s",'SHA',789965,10/05/2004,'SHANM',5000.00,5,75,69);
+
+footer snippet:
+---------------
+
+select count(*) from employees;
+
+---------------------------------------------------------------------------------
+5.	Write a query to update facility name as 'Snooker Table-2' instead of facility name 'Pool Table' infacilities table.
+name column in facilities table refers to facilities name.
+Refer the table details below:
+
+UPDATE facilities 
+set name='Snooker Table-2'
+where name='Pool Table';
+
+-----------------------------------------------------------------------------------
+6.	Write a query to delete all the records from 'members' table
+Refer the table details below:
+
+truncate members;
+
+-----------------------------------------------------------------------------------
+7.	Write a query update the column membercost to 1000 from the table facilities
+ where the monthlymaintenance is greater than 500.
+
+update facilities 
+set membercost=1000
+where monthlymaintenance>500;
+
+-----------------------------------------------------------------------------------
+8.	From the table schema given below, write a query to create a table orders.
+(Follow the same table names/column names as given along with the case)
+The customer table is already created with primary key as customerNumber
+
+create table orders(
+orderNumber int not null primary key, 
+orderDate date not null,
+requiredDate date not null, 
+shippedDate date not null,
+status varchar(15) not null,
+comments text not null,
+customerNumber int not null, 
+foreign key(customerNumber) references customers(customerNumber));
+
+------------------------------------------------------------------------------------
+9.	Adding Foreign key Constraint in the existing table
+We have created an employee and department tables with the below definition without adding foreign key relation
+
+alter table employee
+add constraint  depIdFk
+foreign key(deptId) references department(departmentId);
+
+------------------------------------------------------------------------------------
+10.	From the Schema given below, write a query to produce a count of the number 
+of recommendations each member has made. Sort the output by ascending order of 
+memid (recommendedby). If a particular member did not recommend anyone, ignore 
+that memid. Output recommendedby and the corresponding count.
+
+select recommendedby, count(recommendedby) as count from members
+where recommendedby!="Null"
+group by recommendedby
+order by recommendedby;
+
+------------------------------------------------------------------------------------
+
+11.	From the Schema given below, write a query to produce a list of the total number of slots booked per facility per month for July and August 2012. (month should be fetched as 7 and 8 corresponding to July and August)
+
+select facid,month(starttime) as month , sum(slots) as'Total Slots' from bookings 
+where month(starttime)=7 or month(starttime)=8
+group by facid, month(starttime);
+
+------------------------------------------------------------------------------------
+12.	Given a table with order details. Please find the table details and sample data below.
+TABLE NAME: AGG_ORDERS
+FIELD NAMES: ord_no, purchase_amt, ord_date, cust_id, salesman_id
+
+select cust_id as Customer_ID,ord_date as Date,purchase_amt as Amount from AGG_ORDERS
+group by ord_no, purchase_amt,ord_date
+having max(purchase_amt)in (1000,2200,3700,4000)
+order by cust_id;
+
+------------------------------------------------------------------------------------
+13.	You are given two tables of XYZ company, EMPLOYEE_XYZ and INCENTIVES_XYZ which has details about employees of a company and their incentives. Write a SQL Query that fetches the employee Id as ID, first name of the employees as First_name and sum of the incentives as Incentive for each IDs from the Incentives table.
+ 
+select Employee_id as ID, First_name, sum(Incentive_amount) as Incentive
+from  EMPLOYEE_XYZ e
+join 
+INCENTIVES_XYZ i
+on e.Employee_id=i.Id
+group by id
+order by Employee_id;
+
+------------------------------------------------------------------------------------
+14.	Dave owns a book shop. He is planning to stock all the best selling books in his shop. He collected all the information on author, book names and the number of copies sold in the below format.
+
+select authorName as Author_Name,sum(soldCopies) as sold_sum from authorBooks a
+join 
+soldCopies s
+on a.bookName=s.bookName
+group by authorname
+order by sum(soldCopies) desc
+limit 3;
+
+-------------------------------------------------------------------------------------
+
+15.	Here is the sample employee and salary information of ABC Infotech Limited company. The company has total of 30 employees.
+
+select departmentName as Department_Name, Avg(Salary) as Avg_salaries from EMPLOYEES_ABC e
+join 
+ SALARIES_ABC s
+on e.employeeID=s.employeeID
+group by departmentName
+having avg(Salary)<7000;
+
+------------------------------------------------------------------------------------
+16.	Suppose that a website contains two tables, the Customers table, and the Orders table. Write a SQL query to find all customers who never order anything.
+
+select (cust_name) as Customers from CUSTOMERS
+where id not in (select customer_id from ORDERS) order by cust_name;
+
+-----------------------------------------------------------------------------------
+17.	Write a query to display the name (first name and last name) for those employees who get more salary than the employee whose ID is 105.
+
+select first_name, last_name from EMPLOYEES_SUBQ where
+salary >(select salary from EMPLOYEES_SUBQ where employee_id=105);
+
+-----------------------------------------------------------------------------------
+18.	Write a query to display the name (first name and last name), salary, department id, job id for those employees who work in the same designation(job id) as the employee works whose id is 110.
+
+select first_name, last_name, salary,department_id, job_id from EMPLOYEES_SUBQ 
+where job_id=(select job_id from EMPLOYEES_SUBQ where employee_id=110 );
+
+-------------------------------------------------------------------------------------
+
+19.	From the below ER diagram of HR database, Write a query to find all the employees (employee_id, first_name, last_name, salary, department_id) whose salary is higher than the average salary of the employees in their departments. Use Correlated Subquery concept.
+
+select employee_id, first_name, last_name, salary, department_id from employees e1
+where salary >(select avg(salary) from employees e2
+where e1.department_id=e2.department_id)
+order by department_id, first_name, last_name;
+
+-------------------------------------------------------------------------------------
+
+20.	From the following table, create a view 'newyorkstaff' for those salespersons belonging to the city 'New York'
+
+create view newyorkstaff as
+select * from salesman where city='New York';
+
+--------------------------------------------------------------------------------------
+21.	From the following table, create a view 'totalforday' to count the number of unique customers, compute the average and total purchase amount of customer orders by each date. Round off the average and sum values to 2 decimal places using round() and Give an Alice name to Average as AVG and for the sum as SUM.
+
+create view totalforday as
+select ord_date, count(customer_id) as dist_customer,round(avg(purch_amt),2) as AVG, 
+round(sum(purch_amt),2) as SUM
+from orders
+group by ord_date
+order by ord_date;
+
+------------------------------------------------------------------------------------
+
+22.	From the following table, create a view 'gradecount' to count the number of customers in each grade.
+
+create view gradecount as 
+select grade, count(customer_id) as number 
+from 
+customer
+group by grade;
+
+------------------------------------------------------------------------------------
+
+23.	Given the Employees table, Create a Cursor to find the list of all employees in a department with department Id passes as an argument.
+
+delimiter //
+create procedure EmployeeList(
+In dept_id int, inout employee_list varchar(2000))
+begin 
+DECLARE v_finished integer default 0;
+declare v_ename varchar(100) default '';
+declare C1 cursor for 
+select EMP_NAME from  Employees where DEPARTMENT_ID=dept_id;
+declare continue handler for not found set v_finished=1;
+OPEN C1;
+get_emp: loop
+FETCH C1 into v_ename;
+if v_finished =1 then 
+leave get_emp;
+end if;
+set employee_list = concat(employee_list, v_ename,";");
+end loop get_emp;
+CLOSE C1;
+END //
+delimiter ;
+
+-------------------------------------------------------------------------------------
+
+
+24.	Given Product table, Implement a Cursor inside Stored Procedure to count how many products(product_name) of each product type exists with product type passed as a input argument to the procedure.
+
+DELIMITER $$
+CREATE PROCEDURE ProductCount( IN in_prod_type VARCHAR(30))
+BEGIN 
+DECLARE v_finished INTEGER DEFAULT 0; 
+DECLARE v_prod_type VARCHAR(30) DEFAULT "";
+DECLARE v_prod_count INTEGER DEFAULT 0; 
+DECLARE C1 CURSOR FOR 
+SELECT product_type, count(*) FROM Product GROUP BY 1;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finished = 1;
+OPEN C1; 
+get_emp: LOOP
+FETCH C1 INTO v_prod_type, v_prod_count;
+IF v_finished = 1 THEN LEAVE get_emp; 
+END IF; 
+IF v_prod_type = in_prod_type THEN 
+SELECT v_prod_count as ProductCount; 
+END IF; 
+END LOOP get_emp; 
+CLOSE C1; 
+END $$ 
+DELIMITER ;
+
+------------------------------------------------------------------------------------
+
+25.	Create a trigger named product_availability that inserts mapping records into the products_to_stores table. 
+This trigger is used to enforce business logic; in particular, it helps define the product availability for the different stores. 
+When an item is being inserted into the products table, the trigger will check the availability field. 
+
+DELIMITER $$
+CREATE TRIGGER product_availability
+AFTER INSERT
+ON products FOR EACH ROW
+BEGIN
+IF NEW.availability='LOCAL' then
+INSERT INTO products_to_stores (product_id, store_id) VALUES (NEW.product_id, 1);
+ELSE
+INSERT INTO products_to_stores (product_id, store_id) VALUES (NEW.product_id, 1);
+INSERT INTO products_to_stores (product_id, store_id) VALUES (NEW.product_id, 2);
+END IF;
+END$$
+DELIMITER ;
+
+----------------------------------------------------------------------------------------
+
+26.	Create a trigger named product_archiver that inserts a new row in archived_products table after we delete a particular product in products table.
+
+DELIMITER $$
+CREATE TRIGGER product_archiver
+AFTER DELETE
+ON products FOR EACH ROW
+BEGIN
+INSERT INTO archived_products (product_id, product_name, cost_price, retail_price, availability)
+VALUES (OLD.product_id, OLD.product_name, OLD.cost_price, OLD.retail_price, OLD.availability);
+END$$
+DELIMITER ;
+
+------------------------------------------------------------------------------------
+
+27.	Create a trigger called 'account_balance_validator' which should be triggered before update operation taking place on customer_accounts table. If customer account balance is updated the amount which is less than 0, then the account balance should be updated as 0.
+
+DELIMITER $$
+CREATE TRIGGER account_balance_validator
+BEFORE UPDATE
+ON customer_accounts FOR EACH ROW
+BEGIN
+IF NEW.account_balance < 0
+THEN SET NEW.account_balance = 0;
+END IF ;
+END$$
+DELIMITER ;
+
+--------------------------------------------------------------------------------------
+
+28. Write a query to count the number of Employee with age<35.
+
+SELECT count(emp_id) as AgeCount from Employee 
+where age<35;
+
+-----------------------------------------------------------------------------------
+29.	Given the schema of Railway Reservation System, write a query to print the station codes replacing 'M' with 'K' along with the station name. Sort the output by ascending order of station code.
+
+update Train_Route 
+set station_code=replace(station_code,'M','K')
+where station_code is not null;
+select station_code, name from Train_Route
+order by station_code;
+
+-------------------------------------------------------------------------------------
+30. Write a query to display the custid, fname and customer's dob. Display in sorted order of date of birth year and within that sort by firstname.
+
+select custid,fname, dob from customer 
+order by dob,fname;
+
+------------------------------------------------------------------------------------
