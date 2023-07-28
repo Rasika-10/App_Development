@@ -1,0 +1,170 @@
+/* .reg-main
+{
+  padding-top: 60px;
+  background-image: url("./images/login.avif");
+  justify-content: center;
+  padding-left: 10px;
+  background-repeat: no-repeat;
+background-size: cover;
+ padding-left: 550px;
+}
+  .registration-form-container {
+    max-width: 500px;
+  
+
+    margin: 0 auto;
+    padding: 30px;
+
+   
+    box-shadow: 11px 12px 13px 12px  rgb(126, 125, 125);
+    border-radius:10px;
+
+    font-family:cursive;
+    background-color: rgb(99, 140, 150);
+  }
+  
+
+
+h1 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color:white;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #54568f;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.profile-register
+{
+  float: right;
+  max-width: 70%;
+  padding-right: 100px;
+  padding-top: 30px;
+} */
+
+
+/* Base styles */
+/* .reg-main
+{
+
+  background-image: url("./images/login.avif");
+  justify-content: center;
+  padding-left: 10px;
+  background-repeat: no-repeat;
+background-size: cover;
+ padding-left: 550px;
+} */
+
+.register-main
+{
+  float:left;
+  padding-top: 170px;
+}
+.registration-form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  box-shadow: 11px 12px 13px 12px rgb(126, 125, 125);
+  border-radius: 2px;
+  font-family: cursive;
+  background-color: rgb(99, 140, 150);
+}
+
+h1 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: rgb(34, 32, 32);
+}
+
+input,
+select {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #54568f;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.profile-register {
+  float: right;
+  max-width: 70%;
+  padding-right: 100px;
+  padding-top: 30px;
+}
+
+
+/* img{
+  float: left;
+  padding-top: "70px";
+
+} */
+@media only screen and (max-width: 768px) {
+  .reg-main {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .profile-register {
+    float: none;
+    max-width: 100%;
+    padding-right: 30px;
+  }
+  
+  .registration-form-container {
+    padding: 20px;
+    max-width: 100%;
+  }
+}
+

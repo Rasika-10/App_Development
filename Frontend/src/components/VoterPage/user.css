@@ -1,0 +1,21 @@
+
+
+ .profile-root
+{
+    padding-top: 5%;
+  
+
+}
+.profile-field
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-size:20px;
+    color: rgb(24, 27, 27);
+}
+
+.profile-value
+{
+    color: rgb(70, 128, 175);
+    font-family: 'Times New Roman', Times, serif;
+    font-size:16px;
+}

@@ -1,0 +1,68 @@
+/* Common styles for both desktop and mobile */
+.dashboard-container {
+    display: flex;
+    justify-content: center
+  }
+  
+  
+  
+  .main-content {
+    /* Add your main content styles here */
+    /* margin-left: 100px; Width of the sidebar */
+    padding: 20px;
+    margin-top: 80px; /* Adjust the top margin to accommodate the fixed sidebar */
+  }
+  
+  /* Styles for dashboard cards */
+  .dashboard-cards {
+    display: flex;
+    margin-left: 100px;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: fit-content;
+  }
+  
+  .card2 {
+    flex: 1 1 300px;
+    background-color: #fff;
+    padding: 20px;
+    width: fit-content;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .card2 p {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    color: black;
+  }
+  
+  /* Responsive styles for mobile */
+  @media screen and (max-width: 768px) {
+    .dashboard-container {
+      flex-direction: column; /* Stack sidebar and main content in mobile view */
+    }
+  
+    .main-content {
+      margin-left: 0; /* Remove margin to stack main content below the sidebar */
+      margin-top: 0; /* Remove top margin */
+    }
+  
+    
+  
+    /* Adjust the card layout in mobile view */
+    .dashboard-cards {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .card {
+      flex: 1 1 100%;
+    }
+  }

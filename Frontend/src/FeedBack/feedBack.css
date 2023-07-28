@@ -1,0 +1,59 @@
+/* .feedback
+{
+   width: 100%;
+} */
+
+.down 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+    /* width: 50%; */
+   
+  }
+  
+  .login-form 
+  {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    animation: slideIn 1s ease-in-out;
+    width: 38%;
+  }
+  
+  @keyframes slideIn 
+  {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .feedinput,.feedbutton
+   {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .feedbutton 
+  {
+    background-color: green;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  button#fb:hover 
+  {
+    background-color: #0056b3;
+  }
